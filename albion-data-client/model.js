@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const marketOrderSchema = new Schema({
     _id: Number,
-    ItemTypeID: String,
-    LocationID: Number,
+    ItemTypeId: String,
+    LocationId: Number,
     QualityLevel: Number,
     EnchantmentLevel: Number,
     UnitPriceSliver: Number,
