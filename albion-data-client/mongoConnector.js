@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 db = {
-    URI: 'mongodb+srv://root:root@cluster0.aekb6.mongodb.net/albionDB?retryWrites=true&w=majority'
+    URI: 'mongodb://127.0.0.1:27017/albionDB?directConnection=true&serverSelectionTimeoutMS=2000'
   }
 
 async function mongoConnector() {
