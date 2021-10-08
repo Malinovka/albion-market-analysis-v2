@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^6.0.9",
     "nats": "^2.2.0",
     "node-cron": "^3.0.0"
   }

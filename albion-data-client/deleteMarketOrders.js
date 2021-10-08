@@ -1,5 +1,5 @@
 
-const { MarketOrder } = require('./model.js')
+const { MarketOrder } = require('../utils/models.js')
 
 //Age in hours that a post will be deleted if it hasn't been updated:
 MAX_AGE_HOURS = 24;

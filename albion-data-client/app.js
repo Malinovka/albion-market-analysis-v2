@@ -1,10 +1,10 @@
 const { JSONCodec } = require('nats')
 const cron = require('node-cron')
 const { natsConnector } = require('./natsConnector')
-const { mongoConnector } = require('./mongoConnector')
+const { mongoConnector } = require('../utils/mongoConnector')
 const { upsertMarketOrder } = require('./upsertMarketOrder')
 const { deleteMarketOrders } = require('./deleteMarketOrders')
-const { MarketOrder } = require('./model.js')
+const { MarketOrder } = require('../utils/models.js')
 
 //Big thanks to the Albion Data Project
 //https://www.albion-online-data.com/
