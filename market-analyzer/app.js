@@ -16,11 +16,14 @@ async function main() {
 //vs highest asking buy orders, for each location
 //if sell order price < buy order ask then add quantity/prices
 //record marketorder ids too for later reference
+//translate the item and location IDs into human readable strings
 //create a profit order with the above info
-//translate the item and location IDs into human readable
+
     for await (const doc of agg) {
-        console.log(doc);
+       console.log(doc);
     }
+
+    //console.log(await MarketOrder.find().distinct('LocationId'));
 }
 
 main().catch(console.error);
