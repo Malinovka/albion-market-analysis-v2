@@ -15,8 +15,11 @@ async function main() {
   const sub = await natsConnector();
   await mongoConnector();
 
-  //Cron job to check for and delete expired orders
-  //Currently checks every minute and deletes orders that haven't been updated in over 24 hours
+  //Cron job to check for and delete expired orders.
+  //Timers can be modifed in the deleteMarketOrders module.
+  //Currently checks every minute and deletes orders that 
+  //haven't been updated in over 24 hours or will expire within an hour
+
   cron.schedule('* * * * *', () => {
     deleteMarketOrders();
   });
