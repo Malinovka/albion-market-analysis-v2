@@ -7,7 +7,7 @@ async function upsertMarketOrder(collection, msg) {
       LocationId: msg.LocationId,
       QualityLevel: msg.QualityLevel,
       EnchantmentLevel: msg.EnchantmentLevel,
-      UnitPriceSliver: msg.UnitPriceSliver,
+      UnitPriceSilver: msg.UnitPriceSilver,
       Amount: msg.Amount,
       AuctionType: msg.AuctionType,
       Expires: msg.Expires,

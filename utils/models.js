@@ -7,7 +7,7 @@ const marketOrderSchema = new Schema({
     LocationId: Number,
     QualityLevel: Number,
     EnchantmentLevel: Number,
-    UnitPriceSliver: Number,
+    UnitPriceSilver: Number,
     Amount: Number,
     AuctionType: String,
     Expires: Date,
