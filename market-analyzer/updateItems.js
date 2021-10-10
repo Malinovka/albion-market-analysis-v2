@@ -1,8 +1,5 @@
-const { mongoConnector } = require('../utils/mongoConnector')
 const items = require('./items.json')
 const { Item } = require('../utils/models.js')
-
-mongoConnector();
 
 async function checkItemCollection() {
     if (await Item.count() === 0) {
@@ -18,6 +15,6 @@ async function updateItemCollection() {
     Item.deleteMany({ LocalizedNames: null });
 }
 
-updateItemCollection().catch(console.error);
+updateItemCollection();
 
 module.exports = { checkItemCollection };

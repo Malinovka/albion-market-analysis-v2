@@ -1,9 +1,10 @@
 const { mongoConnector } = require('../utils/mongoConnector')
 const { MarketOrder, ProfitOrder } = require('../utils/models.js');
-const { checkItemCollection } = require('./updateItems')
+const updateItems = require('./updateItems')
 
 async function main() {
     mongoConnector();
+    updateItems.checkItemCollection();
 
     
 
@@ -22,9 +23,16 @@ async function main() {
 //translate the item and location IDs into human readable strings
 //create a profit order with the above info
 
-    for await (const doc of agg) {
-       console.log(doc);
-    }
+
+        const ids = await MarketOrder
+        .find({ LocationId: 7 })
+        .distinct('ItemGroupTypeId')
+ 
+    
+
+    // for await (const doc of agg) {
+    //    console.log(doc);
+    // }
 
     //console.log(await MarketOrder.find().distinct('LocationId'));
 }
