@@ -41,4 +41,11 @@ const profitOrderSchema = new Schema({
 
 const ProfitOrder = mongoose.model('ProfitOrder', profitOrderSchema);
 
-module.exports = { MarketOrder, ProfitOrder };
+const itemSchema = new Schema({
+  UniqueName: String,
+  LocalizedNames: {}
+})
+
+const Item = mongoose.model('Item', itemSchema);
+
+module.exports = { MarketOrder, ProfitOrder, Item };
