@@ -15,6 +15,6 @@ async function updateItemCollection() {
     Item.deleteMany({ LocalizedNames: null });
 }
 
-updateItemCollection();
+updateItemCollection().catch(console.error);
 
-module.exports = { checkItemCollection };
+module.exports = checkItemCollection;
