@@ -1,8 +1,11 @@
 const { mongoConnector } = require('../utils/mongoConnector')
 const { MarketOrder, ProfitOrder } = require('../utils/models.js');
+const { checkItemCollection } = require('./updateItems')
 
 async function main() {
     mongoConnector();
+
+    
 
 //Create aggregator function for searching db
     const agg = MarketOrder.aggregate([
