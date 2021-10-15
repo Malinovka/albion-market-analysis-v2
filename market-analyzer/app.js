@@ -20,7 +20,7 @@ async function main() {
 
     }
 
-    console.log('done downloading');
+    const promiseStack = [];
 
     for (buyLocation in locations) {
         buyLocation = parseInt(buyLocation);
@@ -34,13 +34,17 @@ async function main() {
                 
                 for (item in buyItems) {
                     if (item in sellItems && buyItems[item].price < sellItems[item].price * 0.94) {
-                        generateProfitOrder(buyItems[item].name, buyItems[item].quality, buyLocation, sellLocation);
+                        promiseStack.push(
+                            generateProfitOrder(buyItems[item].name, buyItems[item].quality, buyLocation, sellLocation)
+                        );
                     }
                 }
             }
         }
     }
 
+    await Promise.all(promiseStack).catch(console.error);
+    console.log('done');
 
         //Create aggregator function for searching db
     // const agg = await MarketOrder.aggregate([
