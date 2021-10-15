@@ -17,7 +17,7 @@ nats = {
     })
     console.log(`Connected to ${nc.getServer()}`)
   
-    return nc.subscribe('marketorders.deduped')
+    return nc.subscribe('marketorders.deduped.bulk')
   }
 
   module.exports = { natsConnector };

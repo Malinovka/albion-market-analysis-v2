@@ -26,10 +26,12 @@ async function main() {
 
   //Codec to translate byte array into JSON
   const codec = JSONCodec();
-
+  let i =0;
   //Each message recieved will either update or create a document
   for await (const msg of sub) {
-    upsertMarketOrder(MarketOrder, codec.decode(msg.data));
+    for (doc of codec.decode(msg.data)) {
+      upsertMarketOrder(MarketOrder, doc);
+    }
   }
 }
 

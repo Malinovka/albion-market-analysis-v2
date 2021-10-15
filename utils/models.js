@@ -20,8 +20,7 @@ const MarketOrder = mongoose.model('MarketOrder', marketOrderSchema);
 const profitOrderSchema = new Schema({
   Item: {
     Id: String,
-    Name: String,
-    Enchantement: Number,
+    Enchantment: Number,
     Quality: Number
   },
   BuyFrom: {
@@ -35,7 +34,11 @@ const profitOrderSchema = new Schema({
   Quantity: Number,
   TotalBuyPrice: Number,
   TotalSellPrice: Number,
-  Profit: Number
+  Profit: Number,
+  Orders: {
+    BuyFrom: [Number],
+    SellTo: [Number]
+  }
 },
 { timestamps: true });
 
