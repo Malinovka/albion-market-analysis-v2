@@ -8,7 +8,7 @@ const locations = {
       2004: 'Bridgewatch',
       3002: 'Highland Cross',
       3003: 'Black Market',
-      3004: '3004',
+      3004: 'Martlock',
       3005: 'Caerleon',
       3008: 'Martlock',
       4000: 'Fort Sterling',

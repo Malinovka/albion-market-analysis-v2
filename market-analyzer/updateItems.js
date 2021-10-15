@@ -1,5 +1,6 @@
 const items = require('./items.json')
 const { Item } = require('../utils/models.js')
+const { mongoConnector } = require('../utils/mongoConnector');
 
 async function checkItemCollection() {
     if (await Item.count() === 0) {
@@ -8,6 +9,9 @@ async function checkItemCollection() {
 }
 
 async function updateItemCollection() {
+    if (require.main === module) {
+        mongoConnector();
+    }
     if (await Item.count() > 0) {
         Item.collection.drop();
     }
@@ -17,4 +21,4 @@ async function updateItemCollection() {
 
 updateItemCollection().catch(console.error);
 
-module.exports = checkItemCollection;
+module.exports = { checkItemCollection };
