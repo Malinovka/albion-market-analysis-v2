@@ -1,7 +1,7 @@
 const { mongoConnector } = require('../utils/mongoConnector')
 const { MarketOrder, ProfitOrder, Item } = require('../utils/models.js');
 const { checkItemCollection } = require('./updateItems')
-const { locations } = require('./locations.js')
+const locations = require('./locations.json')
 
 BUY_ORDER_REQUEST = 'request';
 SELL_ORDER_OFFER = 'offer';
@@ -9,42 +9,47 @@ SELL_ORDER_OFFER = 'offer';
 async function main() {
     mongoConnector();
     checkItemCollection();
+    
+    while(true) {
+        console.log('start');
+        const startTime = Date.now();
 
-    buyLocations = {};
-    sellLocations = {};
+        buyLocations = {};
+        sellLocations = {};
 
-    for (location in locations) {
-        location = parseInt(location);
-        buyLocations[location] = await getItemsForLocation(location, SELL_ORDER_OFFER);
-        sellLocations[location] = await getItemsForLocation(location, BUY_ORDER_REQUEST);
+        for (location in locations) {
+            location = parseInt(location);
+            buyLocations[location] = await getItemsForLocation(location, SELL_ORDER_OFFER);
+            sellLocations[location] = await getItemsForLocation(location, BUY_ORDER_REQUEST);
+        }
 
-    }
+        const promiseStack = [];
 
-    const promiseStack = [];
+        for (buyLocation in locations) {
+            buyLocation = parseInt(buyLocation);
 
-    for (buyLocation in locations) {
-        buyLocation = parseInt(buyLocation);
-
-        for (sellLocation in locations) {
-            sellLocation = parseInt(sellLocation);
-            
-            if (buyLocation != sellLocation) {
-                let sellItems = sellLocations[sellLocation];
-                let buyItems = buyLocations[buyLocation];
+            for (sellLocation in locations) {
+                sellLocation = parseInt(sellLocation);
                 
-                for (item in buyItems) {
-                    if (item in sellItems && buyItems[item].price < sellItems[item].price * 0.94) {
-                        promiseStack.push(
-                            generateProfitOrder(buyItems[item].name, buyItems[item].quality, buyLocation, sellLocation)
-                        );
+                if (buyLocation != sellLocation) {
+                    let sellItems = sellLocations[sellLocation];
+                    let buyItems = buyLocations[buyLocation];
+                    
+                    for (item in buyItems) {
+                        if (item in sellItems && buyItems[item].price < sellItems[item].price * 0.94) {
+                            promiseStack.push(
+                                generateProfitOrder(buyItems[item].name, buyItems[item].quality, buyLocation, sellLocation)
+                            );
+                        }
                     }
                 }
             }
         }
-    }
 
-    await Promise.all(promiseStack).catch(console.error);
-    console.log('done');
+        await Promise.allSettled(promiseStack);
+        console.log('Deleting old orders');
+
+        await deleteProfitOrders(startTime);
 
         //Create aggregator function for searching db
     // const agg = await MarketOrder.aggregate([
@@ -68,7 +73,7 @@ async function main() {
     // }
 
     //console.log(await MarketOrder.find().distinct('LocationId'));
-
+    }
 }
 
 //Gets a list of distinct items from a market
@@ -113,16 +118,21 @@ async function generateProfitOrder(item, quality, buyLocation, sellLocation) {
         { $sort: { UnitPriceSilver: -1 }}
     ])
 
-    if (offers && requests) {
-        const newProfitOrder = await calculateOrderValues(offers, requests);
+    const itemQuery = await Item.findOne({ UniqueName: item });
 
+    if (offers && requests) {
+        const newProfitOrder = calculateOrderValues(offers, requests);
+
+        newProfitOrder.Item.Name = itemQuery["LocalizedNames"]["EN-US"];
+        
         if (newProfitOrder) {
+
             await ProfitOrder.findOneAndUpdate(
                 { 
                     'Item.Id': item,
-                    'Item.Quality': quality,
                     'BuyFrom.Id': buyLocation,
-                    'SellTo.Id': sellLocation
+                    'SellTo.Id': sellLocation,
+                    'Item.Quality': quality
                 }, 
                     newProfitOrder,
                 {
@@ -136,10 +146,13 @@ async function generateProfitOrder(item, quality, buyLocation, sellLocation) {
     
 }
 
-async function calculateOrderValues(offers, requests) {
+function calculateOrderValues(offers, requests) {
+    
+
     const newProfitOrder = {
         Item: {
             Id: offers[0].ItemTypeId,
+            Name: "",
             Enchantment: offers[0].EnchantmentLevel,
             Quality: offers[0].QualityLevel
         },
@@ -195,9 +208,26 @@ async function calculateOrderValues(offers, requests) {
     newProfitOrder.Orders.SellTo = Array.from(newProfitOrder.Orders.SellTo);
     newProfitOrder.Orders.BuyFrom = Array.from(newProfitOrder.Orders.BuyFrom);
     newProfitOrder.TotalSellPrice = Math.ceil(newProfitOrder.TotalSellPrice * 0.94);
-    newProfitOrder.Profit = newProfitOrder.TotalSellPrice - newProfitOrder.TotalBuyPrice
+    newProfitOrder.Profit = newProfitOrder.TotalSellPrice - newProfitOrder.TotalBuyPrice;
+    
+    
+    
     return newProfitOrder;
 
+}
+
+async function deleteProfitOrders(start) {
+    const { deletedCount } = await ProfitOrder.deleteMany(
+        { updatedAt: { $lte: start } }
+      //, { session }
+      );
+    
+      //await session.commitTransaction();
+      //session.endSession();
+      
+      if (deletedCount > 0) {
+        console.log(`Deleted ${deletedCount} old orders`)
+      }
 }
 
 
