@@ -49,6 +49,8 @@ const itemSchema = new Schema({
   LocalizedNames: {}
 })
 
+itemSchema.index({ UniqueName: 1 });
+
 const Item = mongoose.model('Item', itemSchema);
 
 module.exports = { MarketOrder, ProfitOrder, Item };
