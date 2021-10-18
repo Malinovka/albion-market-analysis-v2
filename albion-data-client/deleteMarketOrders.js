@@ -11,12 +11,21 @@ EXPIRATION_MODIFIER = 1;
 
 //Deletes old orders by checking {Expires} and {updatedAt}
 async function deleteMarketOrders () {
+  //const session = await MarketOrder.startSession();
+  //session.startTransaction();
+
   const { deletedCount } = await MarketOrder.deleteMany({
     $or: [
       { Expires: { $lte: new Date(Date.now() - (EXPIRATION_MODIFIER * 3600000)) } },
       { updatedAt: { $lte: new Date(Date.now() - (MAX_AGE_HOURS * 3600000)) } }
     ]
-  })
+  }
+  //, { session }
+  );
+
+  //await session.commitTransaction();
+  //session.endSession();
+  
   if (deletedCount > 0) {
     console.log(`Deleted ${deletedCount} expired orders`)
   }
