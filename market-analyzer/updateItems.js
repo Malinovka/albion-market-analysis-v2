@@ -13,7 +13,7 @@ async function updateItemCollection() {
         mongoConnector();
     }
     if (await Item.count() > 0) {
-        Item.collection.drop();
+        await Item.deleteMany({});
     }
     Item.insertMany(items);
     Item.deleteMany({ LocalizedNames: null });
