@@ -20,7 +20,7 @@ const MarketOrder = mongoose.model('MarketOrder', marketOrderSchema);
 const profitOrderSchema = new Schema({
   Item: {
     Id: String,
-    Name: String,
+    LocalizedNames: {},
     Enchantment: Number,
     Quality: Number
   },
