@@ -183,8 +183,9 @@ input[type="button"] {
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #bbb;
+  border: none;
+  border-left: 1px solid #5559;
+  border-right: 1px solid #5559;
   cursor: pointer;
   box-sizing: border-box; }
 .button:hover,
@@ -324,7 +325,7 @@ pre > code {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 th,
 td {
-  padding: 12px 15px;
+  padding-right:20px;
   text-align: left;
   border-bottom: 1px solid #E1E1E1; }
 th:first-child,
@@ -337,7 +338,7 @@ td:last-child {
 
 /* Spacing
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-button,
+/* button,
 .button {
   margin-bottom: 1rem; }
 input,
@@ -354,7 +355,7 @@ p,
 ul,
 ol,
 form {
-  margin-bottom: 2.5rem; }
+  margin-bottom: 2.5rem; } */
 
 
 /* Utilities
@@ -377,7 +378,7 @@ hr {
   margin-top: 3rem;
   margin-bottom: 3.5rem;
   border-width: 0;
-  border-top: 1px solid #E1E1E1; }
+  border-top: 1px solid #3e3e3e; }
 
 
 /* Clearing

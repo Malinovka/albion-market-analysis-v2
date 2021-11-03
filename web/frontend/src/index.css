@@ -1,0 +1,176 @@
+body {
+    background: #531405;
+    margin: 0;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo {
+    margin: 10px 0px 15px 0px;
+}
+
+input:focus, select:focus{
+    outline:none !important;
+    border:none !important;
+}
+
+header {
+    background: #3e3e3e;
+    
+    justify-content: right;
+    width: 100%;
+    display:flex;
+}
+
+header button {
+    border: none;
+    color: tan;
+}
+
+header button:hover, header button:focus {
+    color: tan;
+    background: #00000029;
+}
+
+header select {
+    color: tan;
+    display: inline-block;
+    height: 38px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-right: 10px;
+    padding: 0;
+}
+
+header select:hover {
+    background: #00000029;
+}
+
+option {
+    background: #3e3e3e;
+}
+
+.dataTable {
+    background: #ffeed4;
+    border-radius: 4px 4px 0px 0px;
+    max-width:70em;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    background: #d3bb9a;
+    border-radius: 4px 4px 0px 0px;
+}
+
+#filter-locations {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+fieldset {
+    max-width: 60em;
+    margin: 5px 20px;
+}
+
+.locationList {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.locationList label {
+    font-weight: normal;
+}
+
+#filter-locations button {
+    width: 50%;
+    padding: 0;
+    border: 1px solid grey;
+    background: #d3bb9a;
+}
+
+#orders-table {
+    margin: 20px;
+}
+
+.about-overlay {
+    width: 50%;
+    height: 50%;
+    background: linear-gradient(#ffeed4, #e7d4bb);
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: -1px 2px 3px 1px black;
+    position: fixed;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, 0);
+    color: #3e3e3e;
+}
+
+.close-btn {
+    font-size: xx-large;
+    float: right;
+    padding: 0px 10px;
+    color: #222222;
+}
+
+.close-btn:hover {
+    color: #222222;
+}
+
+.market-orders table {
+    display: block;
+}
+
+.market-orders {
+    display: flex;
+    flex-direction: column;
+    margin: 5
+px
+ 0
+px
+;
+}
+
+.market-orders td, .market-orders th {
+    padding-left: 5px !important;
+}
+
+caption {
+    font-size: large;
+}
+
+.arrow {
+    font-size: 3rem;
+    line-height: 3rem;
+}
+
+.market-order-data {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.market-order-headers {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+}
