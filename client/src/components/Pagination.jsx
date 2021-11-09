@@ -1,8 +1,13 @@
+import Button from "./Button"
+
 export default function Pagination(props) {
     return (
         <div className='pagination'>
-        <button type='pagination' onClick={props.goToPrev}>Previous</button>
-        <button type='pagination' onClick={props.goToNext}>Next</button>
+            <Button className="pagination-btn" handleClick={() => props.changePage(-props.currentPage)}>First</Button>
+            <Button className="pagination-btn" handleClick={() => props.changePage(-1)}>Previous</Button>
+            <span>Page {props.currentPage} of {props.totalPages}</span>
+            <Button className="pagination-btn" handleClick={() => props.changePage(1)}>Next</Button>
+            <Button className="pagination-btn" handleClick={() => props.changePage(props.totalPages)}>Last</Button>
         </div>
     )
 }
