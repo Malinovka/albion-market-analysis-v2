@@ -42,6 +42,7 @@ function timeAgo(date) {
             return date;
         }
     }
+    return "> 1 year"
 }
 
 //console.log(timeAgo('2021-11-06T19:19:46.591+00:00'));

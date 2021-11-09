@@ -41,7 +41,7 @@ export default function MarketOrders(props) {
                             <th>Order Id</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Expiry</th>
+                            <th>Expires In</th>
                             <th>Last update</th>
                         </tr>
                     </thead>

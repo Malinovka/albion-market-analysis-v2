@@ -30,7 +30,6 @@ router.get('/', function (req, res, next) {
             query[`Item.LocalizedNames.EN-US`] = req.query.search;
         }
     }
-    console.log(query);
 
     ProfitOrder.count({}, function( e, count){
         orderCount = count;
