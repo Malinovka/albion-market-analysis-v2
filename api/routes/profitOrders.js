@@ -18,14 +18,19 @@ router.get('/', function (req, res, next) {
             }
         }
         
-        if ('limit' in req.query) {
+        if (req.query.limit) {
             limit = Number(req.query.limit);
         }
 
-        if ('page' in req.query) {
+        if (req.query.page) {
             skip = Number((req.query.page - 1) * limit);
         }
+
+        if (req.query.search) {
+            query[`Item.LocalizedNames.EN-US`] = req.query.search;
+        }
     }
+    console.log(query);
 
     ProfitOrder.count({}, function( e, count){
         orderCount = count;

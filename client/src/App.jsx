@@ -12,12 +12,8 @@ class App extends Component {
 
     this.state = {
       lang: 'EN-US',
-      
-      //not sure yet
     }
-
     this.setLang = this.setLang.bind(this);
-
   }
 
   setLang(e) {

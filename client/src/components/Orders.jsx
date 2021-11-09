@@ -15,7 +15,8 @@ export default function Orders(props) {
         <tbody>
             {orders.length > 0 ?
                 orders.map((order) => <ProfitOrder key={order['_id']} order={order} lang={props.lang}/>)
-            : 'No orders found!'}
+            : <tr>
+            <td colSpan='10' className='empty-table'>No orders found!</td></tr>}
         </tbody>
         </table>
     );

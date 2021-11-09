@@ -1,11 +1,21 @@
+import React, { useState } from 'react';
+
 export default function Search(props) {
+    const [value, setValue] = useState(props.search);
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    }
+
     return(
-        <form>
-            <input
+        <form onSubmit={(e) => props.handleSubmit(e, value)}>
+            <input 
+                onChange={handleChange}
+                value={value}
                 type="text"
-                id="item-search"
+                className="item-search"
                 placeholder="Search Items..."
-                name="s"
+                name="search"
                 autoComplete='off'
             />
             <button type="submit">Search</button>

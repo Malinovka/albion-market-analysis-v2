@@ -7,7 +7,8 @@ import React, { useState, useEffect } from 'react';
 export default function Table(props) {
 
     const [showFilter, toggleFilter] = useState(true);
-    const [page, setPage] = useState(370);
+    const [search, setSearch] = useState('');
+    const [page, setPage] = useState(1);
     const [orders, setOrders] = useState([]);
     const [orderCount, setOrderCount] = useState(0);
     const [filteredLocations, setFilteredLocations] = useState(
@@ -34,12 +35,17 @@ export default function Table(props) {
         setPage(page + n);
     }
 
+    const handleSearchSubmit = (e, value) => {
+        e.preventDefault();
+        setSearch(value);
+    }
+
     const url = new URL(`http://localhost:3001/profitorders`);
     url.search = new URLSearchParams(filteredLocations);
     url.searchParams.set('page', page);
+    url.searchParams.set('search', search);
 
     useEffect(() => {
-        console.log(url);
         fetch(url)
         .then(response => {
             if (response.ok) {
@@ -57,7 +63,7 @@ export default function Table(props) {
             toggleFilter(!showFilter);
         }
 
-    }, [filteredLocations, page])
+    }, [filteredLocations, page, search])
 
     function goToPrev() {
         if (page > 1) {
@@ -71,7 +77,7 @@ export default function Table(props) {
 
     return (
         <div className='dataTable'>
-            <Toolbar toggleFilter={() => toggleFilter(!showFilter)}/>
+            <Toolbar toggleFilter={() => toggleFilter(!showFilter)} handleSearchSubmit={handleSearchSubmit} search={search}/>
             {showFilter && <Filter  
                                 handleSubmit={filterLocations} 
                                 handleClose={() => toggleFilter(!showFilter)}

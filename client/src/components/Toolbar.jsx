@@ -4,7 +4,7 @@ import Button from './Button';
 export default function Toolbar(props) {
     return (
         <div className='toolbar'>
-            <Search />
+            <Search handleChange={props.handleSearchChange} search={props.search} handleSubmit={props.handleSearchSubmit}/>
             <Button handleClick={props.toggleFilter}>Filter</Button>
         </div>
     );
