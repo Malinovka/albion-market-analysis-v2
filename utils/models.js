@@ -37,8 +37,8 @@ const profitOrderSchema = new Schema({
   TotalSellPrice: Number,
   Profit: Number,
   Orders: {
-    BuyFrom: [Number],
-    SellTo: [Number]
+    BuyFrom: [{ type: Schema.Types.Number, ref: 'MarketOrder' }],
+    SellTo: [{ type: Schema.Types.Number, ref: 'MarketOrder' }]
   }
 },
 { timestamps: true });
