@@ -77,7 +77,7 @@ export default function Table(props) {
 
     return (
         <div className='dataTable'>
-            <Toolbar toggleFilter={() => toggleFilter(!showFilter)} handleSearchSubmit={handleSearchSubmit} search={search}/>
+            <Toolbar toggleFilter={() => toggleFilter(!showFilter)} handleSearchSubmit={handleSearchSubmit} search={search} lang={props.lang}/>
             {showFilter && <Filter  
                                 handleSubmit={filterLocations} 
                                 handleClose={() => toggleFilter(!showFilter)}

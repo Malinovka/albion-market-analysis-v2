@@ -36,7 +36,8 @@ router.get('/', function (req, res, next) {
         orderCount = count;
     })
 
-    ProfitOrder.find(query || {})
+    ProfitOrder
+    .find(query || {})
     .sort({Profit: -1})
     .limit(limit || 30)
     .skip(skip || 0)
