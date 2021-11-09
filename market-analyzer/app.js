@@ -48,7 +48,9 @@ async function main() {
         }
         const promiseResults = await Promise.allSettled(promiseStack);
         const rejected = promiseResults.filter(result => result.status === 'rejected').map(result => result.reason);
-        console.log(rejected);
+        if (rejected.length > 0) { 
+            console.log(rejected);
+        }
 
         await deleteProfitOrders(startTime);
     }
