@@ -13,7 +13,8 @@ export default function ProfitOrder(props) {
 
     return (
         <>
-        <tr className="profit-order" onClick={handleClick}>
+        <tr className={dropdown? "profit-order dropdown" : "profit-order"} 
+            onClick={handleClick}>
             <td><img src={`https://render.albiononline.com/v1/item/${order['Item']['Id']}.png?size=50`} alt={order['Item']['LocalizedNames'][lang]}/></td>
             <td>{order['Item']['LocalizedNames'][lang]}</td>
             <td>{order['Item']['Quality']}</td>
@@ -30,7 +31,7 @@ export default function ProfitOrder(props) {
             <tr>
                 <td colSpan="10">
                     <MarketOrders 
-                        orderList={order['Orders']} 
+                        orders={order['Orders']} 
                         buyLocation={order['BuyFrom']['Name']}
                         sellLocation={order['SellTo']['Name']}
                     />

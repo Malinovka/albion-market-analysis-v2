@@ -1,7 +1,9 @@
+import MarketOrder from "./MarketOrder";
+
 export default function MarketOrders(props) {
-    const buyOrders = props.orderList['BuyFrom'];
-    const sellOrders = props.orderList['SellTo'];
-    
+    const buyOrders = props.orders['BuyFrom'];
+    const sellOrders = props.orders['SellTo'];
+
     return (
         <div className='market-orders'>
             <div className='market-order-headers'>
@@ -16,13 +18,20 @@ export default function MarketOrders(props) {
                             <th>Order Id</th>
                             <th>Price</th>
                             <th>Quantity</th>
-                            <th>Expiry</th>
-                            <th>Last update</th>
+                            <th>Expires In</th>
+                            <th>Last updated</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {buyOrders.slice(0, 10).map((order) => <tr key={order}><td>{order}</td></tr>)}
-                        {buyOrders.length > 10 && <tr className='extra-orders'><td colSpan='5'>... {buyOrders.length - 10} additional orders</td></tr>}
+                        {buyOrders.slice(0, 9).map((order) =>
+                            <MarketOrder 
+                                key={order._id}
+                                order={order}
+                            />
+                        )}
+                        {buyOrders.length > 10 && 
+                            <tr className='extra-orders'>
+                                <td colSpan='5'>... {buyOrders.length - 10} additional orders</td></tr>}
                     </tbody>
                 </table>
                 
@@ -37,7 +46,13 @@ export default function MarketOrders(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {sellOrders.slice(0, 10).map((order) => <tr key={order}><td>{order}</td></tr>)}
+                        {sellOrders.slice(0, 9).map((order) =>
+                            <MarketOrder 
+                                key={order._id}
+                                order={order}
+                            />
+                        )}
+                        {sellOrders.length > 10 && <tr className='extra-orders'><td colSpan='5'>... {sellOrders.length - 10} additional orders</td></tr>}
                     </tbody>
                 </table>
             </div>

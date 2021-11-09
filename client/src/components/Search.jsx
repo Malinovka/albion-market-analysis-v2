@@ -6,6 +6,7 @@ export default function Search(props) {
                 id="item-search"
                 placeholder="Search Items..."
                 name="s"
+                autoComplete='off'
             />
             <button type="submit">Search</button>
         </form>
