@@ -38,7 +38,7 @@ export default function Search(props) {
                 onChange={(e) => setValue(e.target.value)}
                 onFocus={() => setShowSuggestions(true)}
                 value={value}
-                type="text"
+                type="search"
                 className="item-search"
                 placeholder="Search Items..."
                 name="search"

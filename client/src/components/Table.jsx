@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 export default function Table(props) {
 
+    const locationsList = ['Thetford',"Morgana's Rest","Lymhurst","Forest Cross","Merlyn's Rest","Bridgewatch","Highland Cross","Black Market","Martlock","Caerleon","Fort Sterling","Arthur's Rest"]
     const [showFilter, toggleFilter] = useState(true);
     const [search, setSearch] = useState('');
     const [page, setPage] = useState(1);
@@ -13,8 +14,8 @@ export default function Table(props) {
     const [orderCount, setOrderCount] = useState(0);
     const [filteredLocations, setFilteredLocations] = useState(
         {
-            BuyFrom: ['Thetford',"Morgana's Rest","Lymhurst","Forest Cross","Merlyn's Rest","Bridgewatch","Highland Cross","Black Market","Martlock","Caerleon","Fort Sterling","Arthur's Rest"],
-            SellTo: ['Thetford',"Morgana's Rest","Lymhurst","Forest Cross","Merlyn's Rest","Bridgewatch","Highland Cross","Black Market","Martlock","Caerleon","Fort Sterling","Arthur's Rest"]
+            BuyFrom: locationsList,
+            SellTo: locationsList
         }
     )
 
@@ -41,11 +42,18 @@ export default function Table(props) {
     }
 
     const url = new URL(`http://localhost:3001/profitorders`);
-    url.search = new URLSearchParams(filteredLocations);
+    if (filteredLocations.BuyFrom.length != locationsList.length
+    ||  filteredLocations.SellTo.length != locationsList.length) {
+        url.search = new URLSearchParams(filteredLocations);
+    }
+    if (search) {
+        url.searchParams.set('search', search);
+    }
     url.searchParams.set('page', page);
-    url.searchParams.set('search', search);
+    
 
     useEffect(() => {
+        console.log(url);
         fetch(url)
         .then(response => {
             if (response.ok) {
@@ -82,6 +90,7 @@ export default function Table(props) {
                                 handleSubmit={filterLocations} 
                                 handleClose={() => toggleFilter(!showFilter)}
                                 currentCheckedLocations={filteredLocations}
+                                locationsList = {locationsList}
                                 />}
             <Orders lang={props.lang} orders={orders} goToPrev={goToPrev} goToNext={goToNext}/>
             <Pagination currentPage={page} totalPages={Math.ceil(orderCount/30)} changePage={changePage}/>

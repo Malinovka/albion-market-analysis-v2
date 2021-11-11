@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 
 export default function Filter(props) {
     const { BuyFrom, SellTo } = props.currentCheckedLocations;
+    const { locationsList } = props
     const [rerender, setRerender] = useState(false);
     const [checkedLocations, setCheckedLocations] = useState({BuyFrom: BuyFrom, SellTo: SellTo});
-    const locations = ['Thetford',"Morgana's Rest","Lymhurst","Forest Cross","Merlyn's Rest","Bridgewatch","Highland Cross","Black Market","Martlock","Caerleon","Fort Sterling","Arthur's Rest"]
     
     const toggleCheck = e => {
         const { name, value } = e.target;
@@ -28,7 +28,7 @@ export default function Filter(props) {
             newChecked[name] = [];
         }
         else {
-            newChecked[name] = locations;
+            newChecked[name] = locationsList;
         }
         setCheckedLocations(newChecked);
         setRerender(!rerender);
@@ -43,11 +43,11 @@ export default function Filter(props) {
                 <Checkbox
                     name="BuyFrom"
                     label="Select All"
-                    isChecked={checkedLocations.BuyFrom.length === locations.length}
+                    isChecked={checkedLocations.BuyFrom.length === locationsList.length}
                     handleChange={handleSelectAll}
                 />
                 <div className='locationList'> 
-                    {locations.map((loc) => 
+                    {locationsList.map((loc) => 
                         <Checkbox 
                             key={loc} 
                             name="BuyFrom"
@@ -66,11 +66,11 @@ export default function Filter(props) {
                 <Checkbox
                     name="SellTo"
                     label="Select All"
-                    isChecked={checkedLocations.SellTo.length === locations.length}
+                    isChecked={checkedLocations.SellTo.length === locationsList.length}
                     handleChange={handleSelectAll}
                 />
                 <div className='locationList'> 
-                    {locations.map((loc) => 
+                    {locationsList.map((loc) => 
                         <Checkbox 
                             key={loc} 
                             name="SellTo"
