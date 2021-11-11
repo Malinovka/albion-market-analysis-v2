@@ -5,8 +5,11 @@ Market tool for Albion Online, to find profitable trades
 > TODO:
 >  - [x] Worker(s)
 >  - [x] Datastore
->  - [ ] API
->  - [x] Frontend (Skeleton)
->  - [ ] Frontend (Full)
+>  - [x] API (MVP)
+>  - [x] Frontend (MVP)
+>  - [ ] Frontend (Full, Styling)
+>  - [ ] API (Full, Documentation)
+>  - [ ] Persist State
+>  - [ ] Cleanup, comments
 
 ![screen](https://user-images.githubusercontent.com/84699546/140047860-fdf8c15c-2c9c-470f-ba46-5823f3e72e01.png)
