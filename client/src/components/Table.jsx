@@ -98,7 +98,7 @@ export default function Table(props) {
     return (
         <div className='dataTable'>
             <Toolbar 
-                toggleFilter={() => toggleFilter(!showFilter)} 
+                toggleFilter={() => toggleFilter(!showFilter)}
                 handleSearchSubmit={handleSearchSubmit} 
                 handleRefresh={handleRefresh}
                 search={search} 
@@ -107,10 +107,16 @@ export default function Table(props) {
                                 handleSubmit={filterLocations} 
                                 handleClose={() => toggleFilter(!showFilter)}
                                 currentCheckedLocations={filteredLocations}
-                                locationsList = {locationsList}
-                                />}
-            <Orders lang={props.lang} orders={orders} goToPrev={goToPrev} goToNext={goToNext}/>
-            <Pagination currentPage={page} totalPages={Math.ceil(orderCount/30)} changePage={changePage}/>
+                                locationsList = {locationsList}/>}
+            <Orders 
+                lang={props.lang} 
+                orders={orders} 
+                goToPrev={goToPrev} 
+                goToNext={goToNext}/>
+            <Pagination 
+                currentPage={page} 
+                totalPages={Math.ceil(orderCount/30)} 
+                changePage={changePage}/>
         </div>
     );
 }
