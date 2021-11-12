@@ -6,18 +6,26 @@ import React, { useState, useEffect } from 'react';
 
 export default function Table(props) {
 
-    const locationsList = ['Thetford',"Morgana's Rest","Lymhurst","Forest Cross","Merlyn's Rest","Bridgewatch","Highland Cross","Black Market","Martlock","Caerleon","Fort Sterling","Arthur's Rest"]
-    const [showFilter, toggleFilter] = useState(true);
-    const [search, setSearch] = useState('');
-    const [page, setPage] = useState(1);
-    const [orders, setOrders] = useState([]);
-    const [orderCount, setOrderCount] = useState(0);
+    const locationsList = [
+        "Arthur's Rest",  'Black Market',
+        'Bridgewatch',    'Caerleon',
+        'Forest Cross',   'Fort Sterling',
+        'Highland Cross', 'Lymhurst',
+        'Martlock',       "Merlyn's Rest",
+        "Morgana's Rest", 'Thetford'
+      ]
     const [filteredLocations, setFilteredLocations] = useState(
         {
             BuyFrom: locationsList,
             SellTo: locationsList
         }
     )
+    const [showFilter, toggleFilter] = useState(true);
+    const [search, setSearch] = useState('');
+    const [page, setPage] = useState(1);
+    const [orders, setOrders] = useState([]);
+    const [orderCount, setOrderCount] = useState(0);
+    const [refresh, setRefresh] = useState(false);
 
     const filterLocations = (e, locations) => {
         e.preventDefault();
@@ -39,6 +47,10 @@ export default function Table(props) {
     const handleSearchSubmit = (e, value) => {
         e.preventDefault();
         setSearch(value);
+    }
+
+    const handleRefresh = () => {
+        setRefresh(!refresh);
     }
 
     const url = new URL(`http://localhost:3001/profitorders`);
@@ -71,7 +83,7 @@ export default function Table(props) {
             toggleFilter(!showFilter);
         }
 
-    }, [filteredLocations, page, search])
+    }, [filteredLocations, page, search, refresh])
 
     function goToPrev() {
         if (page > 1) {
@@ -85,7 +97,12 @@ export default function Table(props) {
 
     return (
         <div className='dataTable'>
-            <Toolbar toggleFilter={() => toggleFilter(!showFilter)} handleSearchSubmit={handleSearchSubmit} search={search} lang={props.lang}/>
+            <Toolbar 
+                toggleFilter={() => toggleFilter(!showFilter)} 
+                handleSearchSubmit={handleSearchSubmit} 
+                handleRefresh={handleRefresh}
+                search={search} 
+                lang={props.lang}/>
             {showFilter && <Filter  
                                 handleSubmit={filterLocations} 
                                 handleClose={() => toggleFilter(!showFilter)}
