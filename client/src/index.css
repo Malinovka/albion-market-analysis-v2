@@ -107,17 +107,18 @@ fieldset {
 }
 
 .about-overlay {
-    width: 50%;
-    height: 50%;
+    width: 75%;
+    max-width: 600px;
     background: linear-gradient(#ffeed4, #e7d4bb);
     border-radius: 4px;
     padding: 20px;
-    box-shadow: -1px 2px 3px 1px black;
+    box-shadow: -5px 5px 20px 0px #3e3e3e;
     position: fixed;
     left: 50%;
-    top: 5%;
+    top: 230px;
     transform: translate(-50%, 0);
     color: #3e3e3e;
+    z-index: 1;
 }
 
 .close-btn {
@@ -163,7 +164,7 @@ caption {
 .market-order-headers {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     font-size: 2rem;
 }
@@ -190,7 +191,7 @@ caption {
   height: 6em;
 }
 .spinner {
-    margin: 20px auto;
+    margin: 100px auto;
     font-size: 6px;
     position: relative;
     text-indent: -9999em;
@@ -247,4 +248,19 @@ td img{
 
 .extra-orders td:last-child {
     border-bottom: none;
+}
+
+.mo-left {
+    border-right: 1px solid black;
+}
+
+.empty-table td {
+    text-align: center;
+    height: 200px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

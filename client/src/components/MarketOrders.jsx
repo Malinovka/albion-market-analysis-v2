@@ -12,7 +12,7 @@ export default function MarketOrders(props) {
                 <span>{props.sellLocation}</span>
             </div>
             <div className='market-order-data'>
-                <table>
+                <table className='mo-left'>
                     <thead>
                         <tr>
                             <th>Order Id</th>
@@ -35,7 +35,7 @@ export default function MarketOrders(props) {
                     </tbody>
                 </table>
                 
-                <table>
+                <table className='mo-right'>
                     <thead>
                     <tr>
                             <th>Order Id</th>

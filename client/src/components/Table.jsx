@@ -55,17 +55,19 @@ export default function Table(props) {
         setRefresh(!refresh);
     }
 
-    const url = new URL(`http://localhost:3001/profitorders`);
-    if (filteredLocations.BuyFrom.length != locationsList.length
-    ||  filteredLocations.SellTo.length != locationsList.length) {
-        url.search = new URLSearchParams(filteredLocations);
-    }
-    if (search) {
-        url.searchParams.set('search', search);
-    }
-    url.searchParams.set('page', page);
+    
     
     const fetchData = () => {
+        const url = new URL(`http://localhost:3001/profitorders`);
+        if (filteredLocations.BuyFrom.length != locationsList.length
+        ||  filteredLocations.SellTo.length != locationsList.length) {
+            url.search = new URLSearchParams(filteredLocations);
+        }
+        if (search) {
+            url.searchParams.set('search', search);
+        }
+        url.searchParams.set('page', page);
+
         setLoading(true);
         fetch(url)
         .then(response => {
@@ -79,7 +81,10 @@ export default function Table(props) {
             setOrderCount(data.orderCount);
             setLoading(false);
         })
-        .catch(console.error)
+        .catch((e) => {
+            console.log(e);
+            setLoading(false);
+        })
 
         if (showFilter) {
             toggleFilter(!showFilter);
@@ -119,7 +124,9 @@ export default function Table(props) {
                     lang={props.lang} 
                     orders={orders} 
                     goToPrev={goToPrev} 
-                    goToNext={goToNext}/>
+                    goToNext={goToNext}
+                    isLoading={loading}
+                    />
             </div>
             <Pagination 
                 currentPage={page} 
