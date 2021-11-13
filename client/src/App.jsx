@@ -25,7 +25,7 @@ class App extends Component {
       <div className = 'App'>
 
         <Header lang={this.state.lang} changeLang={this.setLang}/>
-        <img id='logo' className='center-img' src={logo} alt='Albion Sniper Logo'/>
+        <a href=""><img id='logo' className='center-img' src={logo} alt='Albion Sniper Logo' title='Albion Sniper Home'/></a>
         <Table 
           lang={this.state.lang} 
           checkedLocations={this.state.checkedLocations} 

@@ -106,7 +106,17 @@ fieldset {
     background: #d3bb9a;
 }
 
-.about-overlay {
+.modal {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #00000066;
+    position: fixed;
+    z-index: 1;
+}
+
+.about {
     width: 75%;
     max-width: 600px;
     background: linear-gradient(#ffeed4, #e7d4bb);
@@ -118,7 +128,7 @@ fieldset {
     top: 230px;
     transform: translate(-50%, 0);
     color: #3e3e3e;
-    z-index: 1;
+    z-index: 2;
 }
 
 .close-btn {
@@ -263,4 +273,9 @@ td img{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.pagination-btn {
+    font-size: 1.5em;
+    font-family: monospace;
 }
