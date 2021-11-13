@@ -2,7 +2,7 @@ import profitOrders from '../profitorders.json';
 import ProfitOrder from './ProfitOrder';
 
 export default function Orders(props) {
-    const headers = ['Icon', 'Name', 'Quality', 'Ench.', 'Buy From', 'Sell To', 'Quantity', 'Total Buy', 'Total Sell', 'Profit']
+    const headers = ['Icon', 'Name', 'Quality', 'Ench.', 'Buy From', 'Sell To', 'Quantity', 'Total Buy', 'Total Sell', 'Profit ▼']
     const { orders } = props;
 
     return (

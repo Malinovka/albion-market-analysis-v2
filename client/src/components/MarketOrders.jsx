@@ -16,7 +16,7 @@ export default function MarketOrders(props) {
                     <thead>
                         <tr>
                             <th>Order Id</th>
-                            <th>Price</th>
+                            <th>Price ▲</th>
                             <th>Quantity</th>
                             <th>Expires In</th>
                             <th>Last updated</th>
@@ -39,7 +39,7 @@ export default function MarketOrders(props) {
                     <thead>
                     <tr>
                             <th>Order Id</th>
-                            <th>Price</th>
+                            <th>Price ▼</th>
                             <th>Quantity</th>
                             <th>Expires In</th>
                             <th>Last update</th>

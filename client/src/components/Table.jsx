@@ -2,6 +2,7 @@ import Toolbar from './Toolbar';
 import Orders from './Orders';
 import Filter from './Filter';
 import Pagination from './Pagination';
+import Loading from './Loading';
 import React, { useState, useEffect } from 'react';
 
 export default function Table(props) {
@@ -26,6 +27,7 @@ export default function Table(props) {
     const [orders, setOrders] = useState([]);
     const [orderCount, setOrderCount] = useState(0);
     const [refresh, setRefresh] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const filterLocations = (e, locations) => {
         e.preventDefault();
@@ -63,9 +65,8 @@ export default function Table(props) {
     }
     url.searchParams.set('page', page);
     
-
-    useEffect(() => {
-        console.log(url);
+    const fetchData = () => {
+        setLoading(true);
         fetch(url)
         .then(response => {
             if (response.ok) {
@@ -76,13 +77,17 @@ export default function Table(props) {
         .then(data => {
             setOrders(data.orders);
             setOrderCount(data.orderCount);
+            setLoading(false);
         })
         .catch(console.error)
 
         if (showFilter) {
             toggleFilter(!showFilter);
         }
+    }
 
+    useEffect(() => {
+        fetchData();
     }, [filteredLocations, page, search, refresh])
 
     function goToPrev() {
@@ -108,11 +113,14 @@ export default function Table(props) {
                                 handleClose={() => toggleFilter(!showFilter)}
                                 currentCheckedLocations={filteredLocations}
                                 locationsList = {locationsList}/>}
-            <Orders 
-                lang={props.lang} 
-                orders={orders} 
-                goToPrev={goToPrev} 
-                goToNext={goToNext}/>
+            <div className='orders-container'>
+                {loading && <Loading />}
+                <Orders 
+                    lang={props.lang} 
+                    orders={orders} 
+                    goToPrev={goToPrev} 
+                    goToNext={goToNext}/>
+            </div>
             <Pagination 
                 currentPage={page} 
                 totalPages={Math.ceil(orderCount/30)} 

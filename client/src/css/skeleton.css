@@ -327,13 +327,13 @@ th,
 td {
   padding-right:20px;
   text-align: left;
-  border-bottom: 1px solid #E1E1E1; }
+  border-bottom: 1px solid #d3bb9a91; }
 th:first-child,
 td:first-child {
-  padding-left: 0; }
+  padding-left: 10px; }
 th:last-child,
 td:last-child {
-  padding-right: 0; }
+  padding-right: 10px; }
 
 
 /* Spacing

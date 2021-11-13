@@ -29,7 +29,7 @@ export default function ProfitOrder(props) {
         </tr>
         {dropdown && 
             <tr>
-                <td colSpan="10">
+                <td colSpan="10" className='market-orders-td'>
                     <MarketOrders 
                         orders={order['Orders']} 
                         buyLocation={order['BuyFrom']['Name']}
