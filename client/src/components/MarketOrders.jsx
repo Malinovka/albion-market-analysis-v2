@@ -42,7 +42,7 @@ export default function MarketOrders(props) {
                             <th>Price ▼</th>
                             <th>Quantity</th>
                             <th>Expires In</th>
-                            <th>Last update</th>
+                            <th>Last updated</th>
                         </tr>
                     </thead>
                     <tbody>

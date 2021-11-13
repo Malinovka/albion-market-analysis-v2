@@ -12,4 +12,4 @@ Market tool for Albion Online, to find profitable trades
 >  - [ ] Persist State
 >  - [ ] Cleanup, comments
 
-![image](https://user-images.githubusercontent.com/84699546/141600523-624cc14e-0027-4db7-8be1-e1922ddd2697.png)
+![image](https://user-images.githubusercontent.com/84699546/141600680-33b8b684-86fd-4482-977e-7c1c75c1dda4.png)
