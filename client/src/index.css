@@ -121,7 +121,7 @@ fieldset {
     max-width: 600px;
     background: linear-gradient(#ffeed4, #e7d4bb);
     border-radius: 4px;
-    padding: 20px;
+    padding: 30px;
     box-shadow: -5px 5px 20px 0px #3e3e3e;
     position: fixed;
     left: 50%;
@@ -129,17 +129,27 @@ fieldset {
     transform: translate(-50%, 0);
     color: #3e3e3e;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
 }
 
 .close-btn {
-    font-size: xx-large;
-    float: right;
+    font-size: 1.5em;
     padding: 0px 10px;
     color: #222222;
+    position: absolute;
+    right: 5px;
+    top: 5px;
 }
 
 .close-btn:hover {
     color: #222222;
+}
+
+.about-content img {
+    width: 30%;
+    height: fit-content;
+    float: right;
 }
 
 .market-orders table {
