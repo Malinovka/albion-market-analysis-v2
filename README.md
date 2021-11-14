@@ -7,7 +7,8 @@ Market tool for Albion Online, to find profitable trades
 >  - [x] Datastore
 >  - [x] API (MVP)
 >  - [x] Frontend (MVP)
->  - [ ] Frontend (Full, Styling)
+>  - [x] Frontend (Full, Styling)
+>  - [ ] Frontend (Responsive, mobile, friendly things)
 >  - [ ] API (Full, Documentation)
 >  - [ ] Persist State
 >  - [ ] Cleanup, comments
