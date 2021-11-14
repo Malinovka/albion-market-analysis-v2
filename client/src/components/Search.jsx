@@ -45,7 +45,7 @@ export default function Search(props) {
                 autoComplete='off'
             />
             
-            {value && showSuggestions && <ul>
+            {value && showSuggestions && <ul className='suggestions'>
                 {suggestions.map((item) => 
                     <li 
                         className='suggestion' 

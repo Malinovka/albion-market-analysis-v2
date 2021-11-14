@@ -289,3 +289,23 @@ td img{
     font-size: 1.5em;
     font-family: monospace;
 }
+
+ul.suggestions {
+    position: absolute;
+    list-style: none;
+    background: white;
+    min-width: 190px;
+    z-index: 1;
+    border: 1px solid #d3bb9a;
+    border-top: none;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.suggestion {
+    margin: 0;
+    padding: 0.5rem 0 1rem 1rem;
+}
+
+.suggestion:hover {
+    background: #d5d5d5;
+}
