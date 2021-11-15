@@ -198,7 +198,7 @@ caption {
 
 .orders-container {
     position: relative;
-    padding: 20px 10px 0px 10px;
+    padding: 10px 10px 0px 10px;
 }
 
 .loading-container {
@@ -252,6 +252,10 @@ caption {
 
 table {
     border-spacing: 0px;
+}
+
+.profit-order {
+    cursor: pointer;
 }
 
 .profit-order:hover {

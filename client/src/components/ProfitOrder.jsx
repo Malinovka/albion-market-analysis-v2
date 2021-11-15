@@ -14,7 +14,8 @@ export default function ProfitOrder(props) {
     return (
         <>
         <tr className={dropdown? "profit-order dropdown" : "profit-order"} 
-            onClick={handleClick}>
+            onClick={handleClick}
+            title={dropdown? `${order['Item']['LocalizedNames'][lang]} - Click to Collapse` : `${order['Item']['LocalizedNames'][lang]} - Click to Expand`}>
             <td><img src={`https://render.albiononline.com/v1/item/${order['Item']['Id']}.png?size=50`} alt={order['Item']['LocalizedNames'][lang]}/></td>
             <td>{order['Item']['LocalizedNames'][lang]}</td>
             <td>{order['Item']['Quality']}</td>
