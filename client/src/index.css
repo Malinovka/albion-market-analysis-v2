@@ -254,6 +254,10 @@ table {
     border-spacing: 0px;
 }
 
+.profit-order:hover {
+    background: rgb(211 187 154 / 50%);
+}
+
 .profit-order.dropdown {
     background: #d3bb9a91;
 }
@@ -331,6 +335,7 @@ footer {
     color: #7c7c7c;
     position: absolute;
     bottom: 0;
+    height: 45px;
 }
 
 footer p {
