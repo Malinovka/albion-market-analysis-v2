@@ -5,8 +5,8 @@ export default function Search(props) {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [suggestions, setSuggestions] = useState([]);
 
-    const url = new URL('http://localhost:3001/items');
-    url.searchParams.set('search', value);
+    const baseURL = ('/api/items');
+    const params = new URLSearchParams({'search': value});
 
     const handleSuggestion = (e, item) => {
         setValue(item.LocalizedNames[props.lang]);
@@ -16,9 +16,8 @@ export default function Search(props) {
 
     useEffect(() => {
         if (value) {
-            url.searchParams.set('search', value);
-            console.log(url);
-            fetch(url)
+            params.set('search', value);
+            fetch(baseURL + '?' + params)
             .then(response => {
                 if (response.ok) {
                     return response.json()

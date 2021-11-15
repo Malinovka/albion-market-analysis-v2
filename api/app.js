@@ -6,12 +6,12 @@ const itemsRoutes = require('./routes/items')
 const app = express();
 mongoConnector();
 
-app.use('/', (req, res, next) => {
+app.use('/api', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
     next();
 })
 
-app.use('/profitorders', profitOrderRoutes);
-app.use('/items', itemsRoutes);
+app.use('/api/profitorders', profitOrderRoutes);
+app.use('/api/items', itemsRoutes);
 
 app.listen(3001);

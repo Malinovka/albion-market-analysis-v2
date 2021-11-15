@@ -1,12 +1,20 @@
 body {
     background: #531405;
     margin: 0;
+    min-height: 100vh;
 }
 
 .App {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+.App::after {
+    content: '';
+    height: 65px;
 }
 
 #logo {
@@ -320,7 +328,9 @@ footer {
     text-decoration: none;
     font-family: Arial;
     font-size: 11px;
-    color: #7c7c7c
+    color: #7c7c7c;
+    position: absolute;
+    bottom: 0;
 }
 
 footer p {

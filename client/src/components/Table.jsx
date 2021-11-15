@@ -58,18 +58,19 @@ export default function Table(props) {
     
     
     const fetchData = () => {
-        const url = new URL(`http://localhost:3001/profitorders`);
+        const baseURL = '/api/profitorders'
+        const params = new URLSearchParams({'page': page});
         if (filteredLocations.BuyFrom.length != locationsList.length
         ||  filteredLocations.SellTo.length != locationsList.length) {
-            url.search = new URLSearchParams(filteredLocations);
+            params.set('BuyFrom', filteredLocations.BuyFrom);
+            params.set('SellTo', filteredLocations.SellTo);
         }
         if (search) {
-            url.searchParams.set('search', search);
+            params.set('search', search);
         }
-        url.searchParams.set('page', page);
 
         setLoading(true);
-        fetch(url)
+        fetch(baseURL + '?' + params)
         .then(response => {
             if (response.ok) {
                 return response.json()
