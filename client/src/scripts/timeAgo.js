@@ -17,12 +17,12 @@ function timeAgo(date) {
     //Various time formats and their max in seconds, along with their divisors
     //Only up to months since I don't expect to have anything older than a year
     const timeFormats = [
-      [60, 'sec', 1],
-      [3600, 'min', 60],
-      [86400, 'hour', 3600],
-      [604800, 'day', 86400],
-      [2419200, 'week', 604800],
-      [29030400, 'month', 2419200]
+      [60, 's', 1],
+      [3600, 'm', 60],
+      [86400, 'h', 3600],
+      [604800, 'd', 86400],
+      [2419200, 'w', 604800],
+      [29030400, 'mo', 2419200]
     ];
 
     //Get absolute value of the difference in seconds
@@ -35,14 +35,13 @@ function timeAgo(date) {
     }
 
     //Loop through formats until seconds is less than the maximum, then divide by format and return string
-    //Add an 's' if greater than 1
     for (let i = 0; i < timeFormats.length; i++) {
         if (seconds < timeFormats[i][0]) {
-            date = `${Math.floor(seconds / timeFormats[i][2])} ${timeFormats[i][1]}${Math.floor(seconds / timeFormats[i][2]) > 1 ? 's' : ''}`;
+            date = `${Math.floor(seconds / timeFormats[i][2])}${timeFormats[i][1]}`;
             return date;
         }
     }
-    return "> 1 year"
+    return "1y"
 }
 
 //console.log(timeAgo('2021-11-06T19:19:46.591+00:00'));

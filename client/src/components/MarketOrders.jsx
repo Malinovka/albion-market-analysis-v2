@@ -15,11 +15,10 @@ export default function MarketOrders(props) {
                 <table className='mo-left'>
                     <thead>
                         <tr>
-                            <th>Order Id</th>
-                            <th>Price ▲</th>
+                            <th>Buy Price▲</th>
                             <th>Quantity</th>
-                            <th>Expires In</th>
-                            <th>Last updated</th>
+                            <th className='p-2'>Expiry</th>
+                            <th className='p-2'>Last Update</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,11 +37,10 @@ export default function MarketOrders(props) {
                 <table className='mo-right'>
                     <thead>
                     <tr>
-                            <th>Order Id</th>
-                            <th>Price ▼</th>
+                            <th>Sell Price▼</th>
                             <th>Quantity</th>
-                            <th>Expires In</th>
-                            <th>Last updated</th>
+                            <th className='p-2'>Expiry</th>
+                            <th className='p-2'>Last Update</th>
                         </tr>
                     </thead>
                     <tbody>

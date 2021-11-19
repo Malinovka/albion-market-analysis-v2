@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Table from './components/Table';
-import logo from './logo.webp';
+import logo from './logo.png';
 //import profitOrders from './profitorders.json';
 
 class App extends Component {

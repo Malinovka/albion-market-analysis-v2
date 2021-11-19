@@ -16,17 +16,16 @@ export default function ProfitOrder(props) {
         <tr className={dropdown? "profit-order dropdown" : "profit-order"} 
             onClick={handleClick}
             title={dropdown? `${order['Item']['LocalizedNames'][lang]} - Click to Collapse` : `${order['Item']['LocalizedNames'][lang]} - Click to Expand`}>
-            <td><img src={`https://render.albiononline.com/v1/item/${order['Item']['Id']}.png?size=50`} alt={order['Item']['LocalizedNames'][lang]}/></td>
-            <td>{order['Item']['LocalizedNames'][lang]}</td>
-            <td>{order['Item']['Quality']}</td>
-            <td>{order['Item']['Enchantment']}</td>
-            <td>{order['BuyFrom']['Name']}</td>
-            <td>{order['SellTo']['Name']}</td>
-            <td>{order['Quantity']}</td>
-            <td>{order['TotalBuyPrice']}</td>
-            <td>{order['TotalSellPrice']}</td>
-            <td>{order['Profit']}</td>
-
+            <td className='p-1'><img src={`https://render.albiononline.com/v1/item/${order['Item']['Id']}.png?size=50`} alt={order['Item']['LocalizedNames'][lang]}/></td>
+            <td className='p-1'>{order['Item']['LocalizedNames'][lang]}</td>
+            <td className='p-4'>{order['Item']['Quality']}</td>
+            <td className='p-4'>{order['Item']['Enchantment']}</td>
+            <td className='p-3'>{order['BuyFrom']['Name']}</td>
+            <td className='p-3'>{order['SellTo']['Name']}</td>
+            <td className='p-2'>{order['Quantity']}</td>
+            <td className='p-4'>{order['TotalBuyPrice']}</td>
+            <td className='p-4'>{order['TotalSellPrice']}</td>
+            <td className='p-1'>{order['Profit']}</td>
         </tr>
         {dropdown && 
             <tr>

@@ -76,7 +76,46 @@ option {
 .dataTable {
     background: #ffeed4;
     border-radius: 4px 4px 0px 0px;
-    max-width:70em;
+    width: 100vw;
+}
+
+@media (min-width: 1000px) {
+    .dataTable {
+      max-width: 70em;
+    }
+  }
+
+.p-2, .p-3, .p-4 {
+    display: none;
+}
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+    .p-2 {
+        display: revert;
+    }
+}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {
+  .p-3 {
+    display: revert;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .p-4 {
+    display: revert;
+  }
+}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {
+
 }
 
 .toolbar {
@@ -166,7 +205,8 @@ fieldset {
 .market-orders {
     display: flex;
     flex-direction: column;
-    margin: 5px 0px;
+    margin: auto;
+    width: fit-content;
 }
 
 .market-orders td, .market-orders th {
@@ -183,15 +223,29 @@ caption {
 }
 
 .market-order-data {
-    width: 100%;
+    width: fit-content;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;   
+    text-align-last: end;
 }
+
+@media (min-width: 750px) {
+    .market-order-data {
+      flex-direction: row;
+    }
+    .market-orders table {
+        width: auto;
+    }
+    .mo-left {
+        border-right: 1px solid black;
+    }
+  }
 
 .market-order-headers {
     display: flex;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     font-size: 2rem;
 }
@@ -252,6 +306,7 @@ caption {
 
 table {
     border-spacing: 0px;
+    width: 100%;
 }
 
 .profit-order {
@@ -283,10 +338,6 @@ td img{
 
 .extra-orders td:last-child {
     border-bottom: none;
-}
-
-.mo-left {
-    border-right: 1px solid black;
 }
 
 .empty-table td {
