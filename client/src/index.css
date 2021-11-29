@@ -311,6 +311,7 @@ table {
 
 .profit-order {
     cursor: pointer;
+    height: 53px;
 }
 
 .profit-order:hover {
