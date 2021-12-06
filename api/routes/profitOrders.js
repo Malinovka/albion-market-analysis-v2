@@ -31,8 +31,8 @@ router.get('/', function (req, res, next) {
         }
     }
 
-    ProfitOrder.count({}, function( e, count){
-        orderCount = count;
+    ProfitOrder.count(query, function( e, count){
+        queryOrderCount = count;
     })
 
     ProfitOrder
@@ -58,7 +58,12 @@ router.get('/', function (req, res, next) {
     })
     .exec()
     .then(data => {
-        res.status(200).json({orders: data, orderCount: orderCount});
+        res.status(200).json(
+            {
+                orders: data,
+                orderCount: queryOrderCount
+            }
+        );
     })
     .catch(err => {
         res.status(500).json({error: err});
