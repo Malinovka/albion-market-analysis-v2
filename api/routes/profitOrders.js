@@ -27,7 +27,17 @@ router.get('/', function (req, res, next) {
         }
 
         if (req.query.search) {
-            query[`Item.LocalizedNames.EN-US`] = req.query.search;
+            query[`$or`] = [
+                { "Item.LocalizedNames.DE-DE" :  { "$regex": req.query.search, "$options":"i"} },
+                { "Item.LocalizedNames.EN-US" :  { "$regex": req.query.search, "$options":"i"} }, 
+                { "Item.LocalizedNames.ES-ES" :  { "$regex": req.query.search, "$options":"i"} }, 
+                { "Item.LocalizedNames.FR-FR" :  { "$regex": req.query.search, "$options":"i"} }, 
+                { "Item.LocalizedNames.KO-KR" :  { "$regex": req.query.search, "$options":"i"} }, 
+                { "Item.LocalizedNames.PL-PL" :  { "$regex": req.query.search, "$options":"i"} },
+                { "Item.LocalizedNames.PT-BR" :  { "$regex": req.query.search, "$options":"i"} },
+                { "Item.LocalizedNames.RU-RU" :  { "$regex": req.query.search, "$options":"i"} },
+                { "Item.LocalizedNames.ZH-CN" :  { "$regex": req.query.search, "$options":"i"} }
+            ];
         }
     }
 

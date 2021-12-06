@@ -7,20 +7,10 @@ let query = {};
 
 router.get('/', function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
-
-    if (req.query.search) {
-        query = {
-            "$or": [
-                { "LocalizedNames.DE-DE" :  { "$regex": req.query.search, "$options":"i"} },
-                { "LocalizedNames.EN-US" :  { "$regex": req.query.search, "$options":"i"} }, 
-                { "LocalizedNames.ES-ES" :  { "$regex": req.query.search, "$options":"i"} }, 
-                { "LocalizedNames.FR-FR" :  { "$regex": req.query.search, "$options":"i"} }, 
-                { "LocalizedNames.KO-KR" :  { "$regex": req.query.search, "$options":"i"} }, 
-                { "LocalizedNames.PL-PL" :  { "$regex": req.query.search, "$options":"i"} },
-                { "LocalizedNames.PT-BR" :  { "$regex": req.query.search, "$options":"i"} },
-                { "LocalizedNames.RU-RU" :  { "$regex": req.query.search, "$options":"i"} },
-                { "LocalizedNames.ZH-CN" :  { "$regex": req.query.search, "$options":"i"} }
-            ]
+    
+    if (req.query.search && req.query.lang) {
+        query[`LocalizedNames.${req.query.lang}`] = {
+            "$regex": req.query.search, "$options":"i"
         }
     }
 
