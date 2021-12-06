@@ -11,7 +11,7 @@ Market tool for Albion Online, to find profitable trades
 >  - [x] Frontend (MVP)
 >  - [x] Frontend (Full, Styling)
 >  - [x] Frontend (Responsive, mobile, friendly things)
->  - [ ] Better Localization
+>  - [x] Better Localization
 >  - [ ] Albion Premium Members Option (3% tax)
 >  - [ ] Enchantment/quality/silver icons
 >  - [ ] API (Full, Documentation)
