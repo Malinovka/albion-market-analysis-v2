@@ -5,7 +5,14 @@ const router = express.Router()
 
 let query = {};
 
+// Returns item names for use with search suggestions
+
+// Example query:
+// http://localhost:3000/api/items?search=Carrots&lang=EN-US
+
 router.get('/', function (req, res, next) {
+    
+    // CORS limited to local client
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
     
     if (req.query.search && req.query.lang) {

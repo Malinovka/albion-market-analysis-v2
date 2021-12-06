@@ -7,9 +7,20 @@ let skip = 1;
 let limit = 30;
 let orderCount;
 
+// Returns profitorder objects
+// Default page size is 30 if none is given
+// Max page size is 200
+
+// Examples of requests:
+// https://albionsniper.com/api/profitorders?page=1
+// https://albionsniper.com/api/profitorders?page=1&limit=1
+// https://albionsniper.com/api/profitorders?page=1&search=Carrots
+// https://albionsniper.com/api/profitorders?page=1&BuyFrom=Caerleon&SellTo=Bridgewatch
+
 router.get('/', function (req, res, next) {
     let query = {};
 
+    // Building query if any exists
     if (req.query !== {}) {
         for (let field of locationFilters) {
             if (field in req.query) {
@@ -19,7 +30,12 @@ router.get('/', function (req, res, next) {
         }
         
         if (req.query.limit) {
-            limit = Number(req.query.limit);
+            if (req.query.limit > 200) {
+                limit = 200;
+            }
+            else {
+                limit = Number(req.query.limit);
+            }
         }
 
         if (req.query.page) {
@@ -41,6 +57,7 @@ router.get('/', function (req, res, next) {
         }
     }
 
+    // Get count of queried orders for pagination
     ProfitOrder.count(query, function( e, count){
         queryOrderCount = count;
     })
@@ -50,6 +67,7 @@ router.get('/', function (req, res, next) {
     .sort({Profit: -1})
     .limit(limit || 30)
     .skip(skip || 0)
+    // Populates the referenced market orders from the marketOrders collection
     .populate({
         path: 'Orders',
         populate: [{
