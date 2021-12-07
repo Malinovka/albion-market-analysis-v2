@@ -13,7 +13,9 @@ Market tool for Albion Online, to find profitable trades
 >  - [x] Frontend (Responsive, mobile, friendly things)
 >  - [x] Better Localization
 >  - [ ] Albion Premium Members Option (3% tax)
->  - [ ] Enchantment/quality/silver icons
+>  - [x] Enchantment/quality/silver icons
+>  - [ ] Better styling/additional information when expanding order
+>  - [ ] Transition animations
 >  - [ ] API (Full, Documentation)
 >  - [ ] Persist State
 >  - [ ] Cleanup, comments
