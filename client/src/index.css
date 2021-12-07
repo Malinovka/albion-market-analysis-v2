@@ -81,7 +81,7 @@ option {
 
 @media (min-width: 1000px) {
     .dataTable {
-      max-width: 70em;
+      max-width: 80em;
     }
   }
 
@@ -311,7 +311,7 @@ table {
 
 .profit-order {
     cursor: pointer;
-    height: 53px;
+    height: 63px;
 }
 
 .profit-order:hover {
@@ -405,4 +405,19 @@ footer a {
 
 footer a:hover {
     color: #949494;
+}
+
+.ench-img {
+    width: 40px;
+}
+
+.silver-img {
+    height: 1em;
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
 }
