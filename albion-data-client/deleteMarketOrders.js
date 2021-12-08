@@ -17,7 +17,12 @@ async function deleteMarketOrders () {
   await MarketOrder.deleteMany({
     $or: [
       { Expires: { $lte: new Date(Date.now() - (EXPIRATION_MODIFIER * 3600000)) } },
-      { updatedAt: { $lte: new Date(Date.now() - (MAX_AGE_HOURS * 3600000)) } }
+      { updatedAt: { $lte: new Date(Date.now() - (MAX_AGE_HOURS * 3600000)) } },
+      // Temporary fix to remove potentially fake buy requests
+      { $and: [
+          { AuctionType: "request" },
+          { UnitPriceSilver: { $gte: 1000000 } }
+      ] }
     ]
   }
   //, { session }
